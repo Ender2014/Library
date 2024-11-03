@@ -1,0 +1,101 @@
+@import "modern-normalize";
+
+@font-face{
+    font-family: Roboto;
+    src: url(recources/roboto-regular-webfont.woff2);
+}
+
+:root {
+    line-height: 1.5;
+    --color-main-bg: #5E4B8A;
+    --color-contrast: #CA7B9E;
+    --color-accent:  #D6C8E0;
+    --color-btn-links: #A77BCA;
+    --color-text-bg: #F3F3F3;
+
+    --fw-thin: 100;
+    --fw-regular: 500;
+    --fw-bold: 600;
+    --fw-black: 700;
+
+    --font-size-small: 1.2rem;
+    --font-size-main: 1.4rem;
+    --font-size-large: 1.8rem;
+    --font-size-header: 2.2rem;
+  
+    --small-padding: 2rem;
+    --medium-padding: 6rem;
+    --large-padding: 9rem;
+}
+
+h1, h2, h3, h4, h5, figure, p, ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+p{
+    font-size: var(--font-size-small);
+    font-weight: var(--fw-thin);
+    opacity: 0.6;
+}
+
+
+ol[role="list"], ul[role="list"] {
+    list-style: none;
+    padding-inline: 0;
+}
+
+li{
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+h1{
+    font-size: var(--font-size-header);
+    font-weight: var(--fw-black);
+}
+
+h2{
+    font-size: var(--font-size-main);
+    font-weight: var(--fw-bold);
+}
+
+h3{
+    font-size: var(--font-size-main);
+    font-weight: var(--fw-regular);
+}
+
+p{
+    font-weight: var(--fw-thin);
+}
+
+img {
+    display: block;
+    max-inline-size: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+}
+
+a:hover, button:hover{
+    cursor: pointer; 
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    font-size: var(--font-size-main);
+    font-weight: var(--fw-regular);
+    height: 100vh;
+}

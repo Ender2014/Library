@@ -94,6 +94,12 @@ function displayBooks() {
     }
 }
 
+// Show modal
+let showFlag = 0;
+modBtn.addEventListener("click", () => {
+    modal.showModal();
+});
+
 // Add example books to the library and display them
 addBookToLibrary("Harry Potter", "J.K. Rowling", 123, "Not Read");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, "Read");

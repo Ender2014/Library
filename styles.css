@@ -182,6 +182,8 @@ button, .status{
     border-radius: var(--font-size-small);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
     padding: var(--large-padding);
+    width: clamp(300px, 20%, 400px);
+   
 }
 
 .modal > h1{
@@ -212,6 +214,11 @@ button, .status{
 
 .modal-btns > button{
     padding: 0.5em 1em;
+}
+
+dialog::backdrop{
+    background-color: rgba(0, 0, 0, 0.5)
+    
 }
 
 /* Modal - End*/

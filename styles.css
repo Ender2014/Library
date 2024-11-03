@@ -147,6 +147,7 @@ button, .status{
 
 .header-left{
     justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .header-left img{
@@ -158,6 +159,7 @@ button, .status{
 
 .header-right{
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .del-btn{

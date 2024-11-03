@@ -259,7 +259,7 @@ dialog::backdrop{
 
 .cards button{
     font-size: var(--font-size-small);
-    padding: 0.5rem 1rem;
+    padding: 0.5em 1em;
     flex:1;
 }
 

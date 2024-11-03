@@ -1,4 +1,4 @@
-@import "modern-normalize";
+/* CSS Reset - Start*/
 
 @font-face{
     font-family: Roboto;
@@ -78,8 +78,9 @@ textarea {
 a:hover, button:hover{
     cursor: pointer; 
 }
-
-/*Global - start*/
+/* CSS reset - end */
+/*------------------------------------------------------------*/
+/* Global - start */
 body{
     margin: 0;
     padding: 0;
@@ -126,9 +127,9 @@ button, .status{
     color: var(--color-text-main);
 }
 
-/* Global -End*/
+/* Global -End */
 /*------------------------------------------------------------*/
-/* Header - start*/
+/* Header - start */
 .header{
     padding: var(--large-padding);
     background-color: var(--color-main-clr);

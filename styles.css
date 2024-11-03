@@ -266,6 +266,11 @@ dialog::backdrop{
 .cards .status{
     background-color: var(--color-still-read);
 }
+
+.status-select{
+    font-size: var(--font-size-small);
+    padding: 0.2em 1em;
+}
 /* Content - End*/
 /*------------------------------------------------------------*/
 /* DefaultMsg - Start*/

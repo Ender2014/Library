@@ -10,8 +10,9 @@ const form = document.querySelector("form");  // Form element
 const addBtn = document.querySelector(".add-btn"); // Add book modal button (not yet implemented)
 const closeBtn = document.querySelector(".close-btn"); // Close modal button 
 const statusMap = {
+    'select': { text: 'Select Option'},
     true: { text: 'Read', color: '#4CAF50' },        // Status for books marked as read
-    false: { text: 'Not read', color: '#F44336' },   // Status for books marked as not read
+    false: { text: 'Not Read', color: '#F44336' },   // Status for books marked as not read
     'in-progress': { text: 'In Progress', color: '#FF9800' } // Status for books currently being read
 };
 let idCounter = 0; // Global id counter for books;
@@ -36,7 +37,6 @@ function addBookToLibrary(title, author, pages, readStatus) {
     console.log(book.id);
 }
 
-// Function to display all books in the library
 function displayBooks() {
     // Clear existing content in the contentContainer
     contentContainer.innerHTML = '';
@@ -65,20 +65,57 @@ function displayBooks() {
         author.textContent = `Author: ${book.author}`;
         card.appendChild(author);
 
+        // Determine status key for mapping
+        const statusKey = book.readStatus === 'Read' ? 'true' : 
+                          book.readStatus === 'Not Read' ? 'false' : 
+                          'in-progress';
+
+        // Create a selector
+        let statusChange = document.createElement("form");
+        statusChange.classList.add("status-change");
+      
+        let statusLabel = document.createElement("label");
+        statusLabel.setAttribute("for", "status-label");
+        statusLabel.textContent = "Status: "
+        statusChange.appendChild(statusLabel);
+        
+        let statusSelect = document.createElement("select");
+        statusSelect.classList.add("status-select");
+
+        // Create options based on name of status
+        Object.keys(statusMap).forEach((statuskey) => {
+            const statusText = getStatusText(statuskey);
+            const option = document.createElement('option');
+            option.setAttribute("value", statuskey); // Set value to status key
+            option.textContent = statusText;
+            statusSelect.appendChild(option);
+        });
+
+        statusChange.appendChild(statusSelect);
+        card.appendChild(statusChange);
+
         // Create a container for the card buttons
         let cardBtns = document.createElement("div");
         cardBtns.classList.add("card-btns");
 
-        // Create status button and determine its text and color based on readStatus
-        let status = document.createElement("button");
-        status.classList.add("status");
-
-        const statusKey =   book.readStatus === 'Read' ? 'true' : 
-                            book.readStatus === 'Not Read' ? 'false' : 
-                            'in-progress'; // Determine status key for mapping
+        let statusButton = document.createElement("button");
+        statusButton.classList.add("status");
+        
         const { text, color } = statusMap[statusKey]; // Get text and color from statusMap
-        status.textContent = text; // Set button text
-        status.style.backgroundColor = color; // Set button color
+        statusButton.textContent = text; // Set button text
+        statusButton.style.backgroundColor = color; // Set button color
+
+        // Update button when selection changes
+        statusSelect.addEventListener('change', function() {
+            const selectedValue = statusSelect.value; // Get the selected option's value
+            const selectedStatus = statusMap[selectedValue]; // Get the status details from the map
+            
+            // Update button text and color based on selection
+            if (selectedStatus) {
+                statusButton.textContent = selectedStatus.text;
+                statusButton.style.backgroundColor = selectedStatus.color;
+            }
+        });
 
         // Create remove button
         let remBtn = document.createElement("button");
@@ -86,10 +123,10 @@ function displayBooks() {
         remBtn.textContent = `Remove`; // Set remove button text
         remBtn.addEventListener("click", () => { // Add event to remove item based on ID.
             deleteBook(book.id);
-        })
+        });
         
         // Append status and remove buttons to card button container
-        cardBtns.appendChild(status);
+        cardBtns.appendChild(statusButton);
         cardBtns.appendChild(remBtn);
 
         // Append button container to the card
@@ -97,6 +134,15 @@ function displayBooks() {
 
         // Finally, append the card to the content container
         contentContainer.appendChild(card);
+    }
+}
+
+// Function to get the text value from the statusMap
+function getStatusText(status) {
+    if (statusMap.hasOwnProperty(status)) {
+        return statusMap[status].text;
+    } else {
+        return 'Status not found';
     }
 }
 
@@ -130,7 +176,6 @@ function displayEmptyMessage(){
     }
 }
 
-
 // Function to reset form inputs;
 function resetForm(){
     form.reset();
@@ -141,7 +186,6 @@ function resetForm(){
 form.addEventListener('submit', function(event) {
     event.preventDefault(); 
 });
-
 
 // Show modal
 let showFlag = 0;

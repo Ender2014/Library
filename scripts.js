@@ -10,3 +10,7 @@ function Book(title, author, pages, read){
 Book.prototype.getInfo = function(){
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read} read yet`;
 }
+
+function addBookToLibrary() {
+    // do stuff here
+}

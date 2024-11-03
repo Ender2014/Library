@@ -129,6 +129,29 @@ closeBtn.addEventListener("click", () => {
     resetForm();
 });
 
+// Delete all buttons
+delBtn.addEventListener("click", () => {
+    while (myLibrary.length > 0) {
+        myLibrary.pop();
+    }
+    displayBooks();
+
+    const defaultContainer = document.createElement("div");
+    defaultContainer.classList.add("default-msg");
+
+    const defaultHeader = document.createElement("h2");
+    defaultHeader.textContent = "No Books Yet";
+
+    const defaultMessage = document.createElement("p");
+    defaultMessage.textContent = "Your library is currently empty. Start adding books to create your collection!"
+
+    defaultContainer.appendChild(defaultHeader);
+    defaultContainer.appendChild(defaultMessage);
+
+    contentContainer.appendChild(defaultContainer);
+});
+
+
 // Add example books to the library and display them
 addBookToLibrary("Harry Potter", "J.K. Rowling", 123, "Not Read");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, "Read");

@@ -3,11 +3,12 @@ const myLibrary = []; // Array to store book objects
 const container = document.querySelector(".container"); // Main container for the application
 const header = document.querySelector(".header"); // Header element
 const contentContainer = document.querySelector(".content"); // Container for displaying books
-const modBtn = document.querySelector(".modal-btn"); // Modal Trigger Button (not yet implemented)
+const modBtn = document.querySelector(".modal-btn"); // Modal Show Button
 const delBtn = document.querySelector(".del-btn"); // Delete button (not yet implemented)
 const modal = document.querySelector(".modal"); // Modal element
+const form = document.querySelector("form");  // Form element
 const addBtn = document.querySelector(".add-btn"); // Add book modal button (not yet implemented)
-const closeBtn = document.querySelector(".close-btn"); // Close modal button (not yet implemented)
+const closeBtn = document.querySelector(".close-btn"); // Close modal button 
 const statusMap = {
     true: { text: 'Read', color: '#4CAF50' },        // Status for books marked as read
     false: { text: 'Not read', color: '#F44336' },   // Status for books marked as not read
@@ -94,15 +95,38 @@ function displayBooks() {
     }
 }
 
+// Function to reset form inputs;
+function resetForm(){
+    form.reset();
+    modal.close();
+}
+
+// Prevent default behaviour of forms
+form.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+});
+
+
 // Show modal
 let showFlag = 0;
 modBtn.addEventListener("click", () => {
     modal.showModal();
 });
 
+// Display and add books
+addBtn.addEventListener("click", () => {
+    const title = form.elements['title'].value; 
+    const author = form.elements['author'].value;
+    const pages = form.elements['pages'].value;
+    const readStatus = form.elements['status'].value;
+    addBookToLibrary(title, author, pages, readStatus);
+    displayBooks();
+    resetForm();
+});
+
 // Close modal
 closeBtn.addEventListener("click", () => {
-    modal.close();
+    resetForm();
 });
 
 // Add example books to the library and display them

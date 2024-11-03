@@ -100,10 +100,13 @@ modBtn.addEventListener("click", () => {
     modal.showModal();
 });
 
+// Close modal
+closeBtn.addEventListener("click", () => {
+    modal.close();
+});
+
 // Add example books to the library and display them
 addBookToLibrary("Harry Potter", "J.K. Rowling", 123, "Not Read");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, "Read");
 addBookToLibrary("1984", "George Orwell", 328, "In Progress");
 displayBooks(); // Call function to render the books on the page
-
-modal.showModal();

@@ -15,6 +15,10 @@
     --color-btn-links:  #6EB5FF;     
     --color-text-bg: #F1FAFF;      
     --color-text-main: #F1FAFF; 
+
+    --color-read: #4CAF50;
+    --color-not-read: #F44336;
+    --color-still-read: #FF9800;
     
     --fw-thin: 100;
     --fw-regular: 500;
@@ -92,7 +96,7 @@ h1{
 }
 
 h2{
-    font-size: var(--font-size-main);
+    font-size: var(--font-size-large);
     font-weight: var(--fw-bold);
 }
 
@@ -110,10 +114,10 @@ p{
     width:100%;
     display: grid;
     grid-template-rows: 1fr 8fr;
-    background-color:var(--color-text-bg);
+  
 }
 
-button{
+button, .status{
     border: none;
     border-radius: var(--medium-padding);
     padding: var(--small-padding) var(--large-padding);
@@ -156,11 +160,50 @@ button{
     justify-content: flex-end;
 }
 
-#del-btn{
+.del-btn{
     background-color: var(--color-error);
 }
 
-
-
-/* Header - end*/
+/* Header - End */
 /*------------------------------------------------------------*/
+/* Content - Start*/
+
+.content{
+    padding: var(--large-padding);
+    display: grid;
+    gap: var(--medium-padding);
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    align-content: flex-start;
+}
+
+.cards{
+    height:280px;
+    background-color:  #FFFFFF;
+    border: 3px solid #E0E0E0; 
+    border-radius: 1rem; 
+    border-radius: var(--font-size-small);
+    border-left: 0.5rem solid var(--color-contrast);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: var(--medium-padding);
+    display:flex;
+    flex-direction: column;
+    gap: var(--medium-padding);  
+}
+
+.cards > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--medium-padding);
+}
+
+.cards button{
+    font-size: var(--font-size-small);
+    padding: 0.5rem 1rem;
+    flex:1;
+}
+
+.cards .status{
+    background-color: var(--color-still-read);
+}
+/* Content - End*/

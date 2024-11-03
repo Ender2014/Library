@@ -77,6 +77,7 @@ textarea {
 
 a:hover, button:hover{
     cursor: pointer; 
+    transform: scale(1.05); 
 }
 /* CSS reset - end */
 /*------------------------------------------------------------*/
@@ -125,6 +126,7 @@ button, .status{
     background-color: var(--color-btn-links);
     font-weight: var(--fw-bold);
     color: var(--color-text-main);
+    transition: transform 0.3s ease;
 }
 
 /* Global -End */
@@ -138,6 +140,8 @@ button, .status{
     grid-template-columns: repeat(2, 1fr);
     gap: var(--large-padding);
     box-shadow: 0px 4px 8px rgba(74, 144, 226, 0.2); 
+    grid-column: 1/2;
+    grid-row: 1/2;
 }
 
 .header-left, .header-right{
@@ -177,6 +181,8 @@ button, .status{
     gap: var(--medium-padding);
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     align-content: flex-start;
+    grid-column: 1/2;
+    grid-row: 2/3;
 }
 
 .cards{

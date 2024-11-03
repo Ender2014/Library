@@ -162,7 +162,7 @@ button, .status{
     flex-wrap: wrap;
 }
 
-.del-btn{
+.del-btn, .rem-btn{
     background-color: var(--color-error);
 }
 
@@ -192,7 +192,8 @@ button, .status{
     gap: var(--medium-padding);  
 }
 
-.cards > div{
+.card-btns{
+    margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;

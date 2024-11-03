@@ -14,6 +14,7 @@ const statusMap = {
     false: { text: 'Not read', color: '#F44336' },   // Status for books marked as not read
     'in-progress': { text: 'In Progress', color: '#FF9800' } // Status for books currently being read
 };
+let idCounter = 0; // Global id counter for books;
 
 // Book Constructor
 function Book(title, author, pages, readStatus) {
@@ -21,6 +22,7 @@ function Book(title, author, pages, readStatus) {
     this.author = author;       // Author of the book
     this.pages = pages;         // Number of pages in the book
     this.readStatus = readStatus; // Read status of the book
+    this.id = idCounter++;
     this.getInfo = function() {
         // Returns a string with book information
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.readStatus} read yet`;
@@ -31,6 +33,7 @@ function Book(title, author, pages, readStatus) {
 function addBookToLibrary(title, author, pages, readStatus) {
     const book = new Book(title, author, pages, readStatus); // Create a new book instance
     myLibrary.push(book); // Add the book to the library array
+    console.log(book.id);
 }
 
 // Function to display all books in the library
@@ -73,7 +76,6 @@ function displayBooks() {
         const statusKey =   book.readStatus === 'Read' ? 'true' : 
                             book.readStatus === 'Not Read' ? 'false' : 
                             'in-progress'; // Determine status key for mapping
-                            
         const { text, color } = statusMap[statusKey]; // Get text and color from statusMap
         status.textContent = text; // Set button text
         status.style.backgroundColor = color; // Set button color
@@ -82,6 +84,9 @@ function displayBooks() {
         let remBtn = document.createElement("button");
         remBtn.classList.add("rem-btn");
         remBtn.textContent = `Remove`; // Set remove button text
+        remBtn.addEventListener("click", () => { // Add event to remove item based on ID.
+            deleteBook(book.id);
+        })
         
         // Append status and remove buttons to card button container
         cardBtns.appendChild(status);
@@ -90,9 +95,20 @@ function displayBooks() {
         // Append button container to the card
         card.appendChild(cardBtns);
 
+
         // Finally, append the card to the content container
         contentContainer.appendChild(card);
     }
+}
+
+// Funciton to delete a book entry;
+function deleteBook(bookId){
+    // Find the book
+    let bookIndex = myLibrary.findIndex((book) => book.id === bookId);
+    // Remove it from array
+    myLibrary.splice(bookIndex, 1);
+    // Show books again
+    displayBooks();
 }
 
 // Function to reset form inputs;
@@ -150,7 +166,6 @@ delBtn.addEventListener("click", () => {
 
     contentContainer.appendChild(defaultContainer);
 });
-
 
 // Add example books to the library and display them
 addBookToLibrary("Harry Potter", "J.K. Rowling", 123, "Not Read");

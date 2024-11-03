@@ -3,7 +3,11 @@ const myLibrary = []; // Array to store book objects
 const container = document.querySelector(".container"); // Main container for the application
 const header = document.querySelector(".header"); // Header element
 const contentContainer = document.querySelector(".content"); // Container for displaying books
+const modBtn = document.querySelector(".modal-btn"); // Modal Trigger Button (not yet implemented)
 const delBtn = document.querySelector(".del-btn"); // Delete button (not yet implemented)
+const modal = document.querySelector(".modal"); // Modal element
+const addBtn = document.querySelector(".add-btn"); // Add book modal button (not yet implemented)
+const closeBtn = document.querySelector(".close-btn"); // Close modal button (not yet implemented)
 const statusMap = {
     true: { text: 'Read', color: '#4CAF50' },        // Status for books marked as read
     false: { text: 'Not read', color: '#F44336' },   // Status for books marked as not read
@@ -95,3 +99,5 @@ addBookToLibrary("Harry Potter", "J.K. Rowling", 123, "Not Read");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, "Read");
 addBookToLibrary("1984", "George Orwell", 328, "In Progress");
 displayBooks(); // Call function to render the books on the page
+
+modal.showModal();

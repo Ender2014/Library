@@ -173,6 +173,36 @@ button, .status{
 
 /* Header - End */
 /*------------------------------------------------------------*/
+/* Modal - Start */
+
+.modal{
+    background-color:  #FFFFFF;
+    border: none;
+    border-radius: 1rem; 
+    border-radius: var(--font-size-small);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+    padding: var(--large-padding);
+}
+
+.modal > h1{
+    margin-bottom: var(--large-padding);
+}
+
+.modal .form-row{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--small-padding);
+}
+
+.modal form{
+    font-size: var(--font-size-small);
+    display: flex;
+    flex-direction: column;
+    gap: var(--small-padding);
+}
+
+/* Modal - End*/
+/*------------------------------------------------------------*/
 /* Content - Start*/
 
 .content{

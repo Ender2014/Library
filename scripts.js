@@ -95,7 +95,6 @@ function displayBooks() {
         // Append button container to the card
         card.appendChild(cardBtns);
 
-
         // Finally, append the card to the content container
         contentContainer.appendChild(card);
     }
@@ -109,7 +108,28 @@ function deleteBook(bookId){
     myLibrary.splice(bookIndex, 1);
     // Show books again
     displayBooks();
+    // If empty, show message
+    displayEmptyMessage();
 }
+
+function displayEmptyMessage(){
+    if (myLibrary.length === 0){
+        const defaultContainer = document.createElement("div");
+        defaultContainer.classList.add("default-msg");
+
+        const defaultHeader = document.createElement("h2");
+        defaultHeader.textContent = "No Books Yet";
+
+        const defaultMessage = document.createElement("p");
+        defaultMessage.textContent = "Your library is currently empty. Start adding books to create your collection!"
+
+        defaultContainer.appendChild(defaultHeader);
+        defaultContainer.appendChild(defaultMessage);
+
+        contentContainer.appendChild(defaultContainer);
+    }
+}
+
 
 // Function to reset form inputs;
 function resetForm(){
@@ -151,20 +171,7 @@ delBtn.addEventListener("click", () => {
         myLibrary.pop();
     }
     displayBooks();
-
-    const defaultContainer = document.createElement("div");
-    defaultContainer.classList.add("default-msg");
-
-    const defaultHeader = document.createElement("h2");
-    defaultHeader.textContent = "No Books Yet";
-
-    const defaultMessage = document.createElement("p");
-    defaultMessage.textContent = "Your library is currently empty. Start adding books to create your collection!"
-
-    defaultContainer.appendChild(defaultHeader);
-    defaultContainer.appendChild(defaultMessage);
-
-    contentContainer.appendChild(defaultContainer);
+    displayEmptyMessage();
 });
 
 // Add example books to the library and display them

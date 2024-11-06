@@ -249,6 +249,18 @@ dialog::backdrop{
     gap: var(--medium-padding);  
 }
 
+.cards .title{
+    font-size: var(--font-size-large);
+    font-weight: var(--fw-bold);
+}
+
+
+.cards .status-change, .cards .author ,.cards .pages{
+    font-size: var(--font-size-small);
+    font-weight: var(--fw-thin);
+    opacity: 70%;
+}
+
 .card-btns{
     margin-top: auto;
     display: flex;

@@ -18,13 +18,16 @@ const statusMap = {
 let idCounter = 0; // Global id counter for books;
 
 // Book Constructor
-function Book(title, author, pages, readStatus) {
-    this.title = title;         // Title of the book
-    this.author = author;       // Author of the book
-    this.pages = pages;         // Number of pages in the book
-    this.readStatus = readStatus; // Read status of the book
-    this.id = idCounter++;
-    this.getInfo = function() {
+class Book{
+    constructor(title, author, pages, readStatus) {
+        this.title = title;         // Title of the book
+        this.author = author;       // Author of the book
+        this.pages = pages;         // Number of pages in the book
+        this.readStatus = readStatus; // Read status of the book
+        this.id = idCounter++;
+    }
+  
+    getInfo() {
         // Returns a string with book information
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.readStatus} read yet`;
     };

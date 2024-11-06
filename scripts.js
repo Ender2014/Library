@@ -34,7 +34,8 @@ class Book{
 }
 
 // Function to add a new book to the library
-function addBookToLibrary(title, author, pages, readStatus) {
+(function(){
+    function addBookToLibrary(title, author, pages, readStatus) {
     const book = new Book(title, author, pages, readStatus); // Create a new book instance
     myLibrary.push(book); // Add the book to the library array
     console.log(book.id);
@@ -185,6 +186,7 @@ function resetForm(){
     modal.close();
 }
 
+
 // Prevent default behaviour of forms
 form.addEventListener('submit', function(event) {
     event.preventDefault(); 
@@ -226,3 +228,4 @@ addBookToLibrary("Harry Potter", "J.K. Rowling", 123, "Not Read");
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, "Read");
 addBookToLibrary("1984", "George Orwell", 328, "In Progress");
 displayBooks(); // Call function to render the books on the page
+})();
